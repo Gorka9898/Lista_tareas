@@ -63,10 +63,13 @@ echo "estas en tarea";
     
 
         <h5 style="margin: 20px; margin-left:35px" class="col-12">Task</h5>
+        <form method="get" action="/tarea" >
         <input type="text"class="col-12" style="width:90%; margin-left:4%; " >
         <div style="width: 100%;margin: 20px;">
         <button type="button" style="margin: 20px;"> <strong>+</strong>  Add Task</button>
 </div>
+
+</form>
 
 </div>
 
