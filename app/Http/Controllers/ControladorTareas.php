@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tarea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class ControladorTareas extends Controller
@@ -13,14 +14,40 @@ class ControladorTareas extends Controller
         return view('tarea', ['tareas' => $users]);
 
     }
-    public function añadir(Request $request)
+
+
+    public function anadir(Request $request)
     {
-
-
+        // Tarea::create([
+        //     'nombre' => $request->get('tarea1')
+        // ]);
+        
+        DB::table('tablaTareas')->insert([
+            'nombre' => $request->get('tarea1')
+        ]);
         return redirect('/');
     }
-    public function borrar($id)
+
+
+    public function ensenar()
     {
+        {
+            $users = DB::table('tablaTareas')->get();
+    
+            return view('tarea', ['tareas' => $users]);
+    
+        }
+   
+    
+    }
+    
+    public function borrar(Request $request)
+    {
+
+        DB::table('tablaTareas')->delete([
+
+            'nombre' => $request->get('tarea1')
+        ]);
 
 
         return redirect('/');

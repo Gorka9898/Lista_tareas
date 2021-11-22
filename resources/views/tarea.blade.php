@@ -63,10 +63,12 @@ echo "estas en tarea";
     
 
         <h5 style="margin: 20px; margin-left:35px" class="col-12">Task</h5>
-        <form method="get" action="/tarea" >
-        <input type="text"class="col-12" style="width:90%; margin-left:4%; " >
+
+        <form method="post" action="/tarea" >
+         {{ csrf_field() }}
+        <input type="text"class="col-12" style="width:90%; margin-left:4%;" name="tarea1" >
         <div style="width: 100%;margin: 20px;">
-        <button type="button" style="margin: 20px;"> <strong>+</strong>  Add Task</button>
+        <button type="submit" style="margin: 20px;"> <strong>+</strong>  Add Task</button>
 </div>
 
 </form>
@@ -86,6 +88,13 @@ echo "estas en tarea";
 <div id="cuerpo2" style="border: 1px solid black;height:70px; background-color:lightgrey; border-radius:1%;" class="d-flex">
 
     <h1 style=" font-size:20px; margin:20px" class="col-12" >Current Task</h1>
+
+    <form method="POST" action="/tarea/{id}">
+    {{ csrf_field() }}
+
+
+
+    </form>
 
 
    
