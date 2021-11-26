@@ -9,7 +9,11 @@ class ControladorTareas extends Controller
 {
     public function show()
     {
+      
         $users = DB::table('tablaTareas')->get();
+        $users = Tarea::all();
+        $users = DB::select('SELECT + FROM tablaTareas');
+
 
         return view('tarea', ['tareas' => $users]);
 
@@ -25,7 +29,7 @@ class ControladorTareas extends Controller
         DB::table('tablaTareas')->insert([
             'nombre' => $request->get('tarea1')
         ]);
-        return redirect('/');
+        return redirect('/show_tasks');
     }
 
 
