@@ -11,8 +11,8 @@ class ControladorTareas extends Controller
     {
       
         $users = DB::table('tablaTareas')->get();
-        $users = Tarea::all();
-        $users = DB::select('SELECT + FROM tablaTareas');
+        
+      
 
 
         return view('tarea', ['tareas' => $users]);
