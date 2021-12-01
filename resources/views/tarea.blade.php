@@ -100,26 +100,27 @@ echo "estas en tarea";
 
             <form method="POST" action="/tarea/{id}">
                 {{ csrf_field() }}
+                @method('delete')
                 <div style="margin: 5%;">
                 @foreach($tareas as $key => $data)
                
-                <table style="border: 1px solid black;">
+                    <table style="border: 1px solid black;">
 
-                <tr>
+                        <tr>
 
-                <td><p style="float: left;">Nombre de la tarea: &nbsp;&nbsp;&nbsp;&nbsp;</p></td>
-                <td><p style="float: left;color:green;"> {{$data->nombre}} &nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-                <td> <input type="button" name="borrar tarea" value="borrar tarea"></button></td>
+                        <td><p style="float: left;">Nombre de la tarea: &nbsp;&nbsp;&nbsp;&nbsp;</p></td>
+                        <td><p style="float: left;color:green;"> {{$data->nombre}} &nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
+                        <td> <input type="submit" name="borrar tarea" value="borrar tarea" ></button></td>
 
-                </tr>
-                
+                        </tr>
+                    
 
 
-</table>
-                
+                    </table>
+                    
                    
                 @endforeach
-</div>
+                </div>
 
             </form>
 
@@ -130,8 +131,6 @@ echo "estas en tarea";
     </div>
 
 
-
-    </div>
 
 
 

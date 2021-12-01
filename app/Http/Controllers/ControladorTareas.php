@@ -45,13 +45,10 @@ class ControladorTareas extends Controller
     
     }
     
-    public function borrar(Request $request)
+    public function borrar( $id)
     {
 
-        DB::table('tablaTareas')->delete([
-
-            'nombre' => $request->get('tarea1')
-        ]);
+        Tarea::destroy($id);
 
 
         return redirect('/');
