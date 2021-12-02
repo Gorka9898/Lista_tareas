@@ -19,7 +19,7 @@ use App\Http\Controllers\ControladorTareas;
 // });
 
 
-Route::get('/show_tasks', [ControladorTareas::class, 'show']);
+
 Route::post('/tarea', [ControladorTareas::class, 'anadir']);
 Route::get('/', [ControladorTareas::class, 'ensenar']);
 Route::delete('/tarea/{id}', [ControladorTareas::class, 'borrar']);

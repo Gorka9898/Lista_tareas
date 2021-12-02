@@ -7,35 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class ControladorTareas extends Controller
 {
-    public function show()
-    {
-      
-        $users = DB::table('tablaTareas')->get();
-        
-      
-
-
-        return view('tarea', ['tareas' => $users]);
-
-    }
-
+ 
 
     public function anadir(Request $request)
     {
-        // Tarea::create([
-        //     'nombre' => $request->get('tarea1')
-        // ]);
+
+        $validatedData = $request->validate([ 
+            'tarea1' => ['required'], 
+            ]); 
+
         
-        DB::table('tablaTareas')->insert([
+                    DB::table('tablaTareas')->insert([
             'nombre' => $request->get('tarea1')
         ]);
-        return redirect('/show_tasks');
+        return redirect('/');
+        
+        
+
     }
 
 
     public function ensenar()
     {
         {
+
+            
             $users = DB::table('tablaTareas')->get();
     
             return view('tarea', ['tareas' => $users]);

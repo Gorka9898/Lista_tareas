@@ -67,9 +67,19 @@ echo "estas en tarea";
             <form method="post" action="/tarea">
                 {{ csrf_field() }}
                 <input type="text" class="col-12" style="width:90%; margin-left:4%;" name="tarea1">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <p>Es necesario rellenar este campo para poder continuar el proceso!!!</p>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div style="width: 100%;margin: 20px;">
                     <button type="submit" style="margin: 20px;"> <strong>+</strong> Add Task</button>
                 </div>
+
 
             </form>
 
@@ -98,35 +108,46 @@ echo "estas en tarea";
 
             <h5 style="margin: 20px; margin-left:35px; border-bottom: 1px solid lightgrey; border-width:60%;width:90%; " class="col-12">Task</h5>
 
-            <form method="POST" action="/tarea/{id}">
-                {{ csrf_field() }}
-                @method('delete')
-                <div style="margin: 5%;">
+
+            <div style="margin: 5%;">
                 @foreach($tareas as $key => $data)
-               
-                    <table style="border: 1px solid black;">
 
-                        <tr>
+                <table style="border: 1px solid black; display: flex; align-items:center; ">
 
-                        <td><p style="float: left;">Nombre de la tarea: &nbsp;&nbsp;&nbsp;&nbsp;</p></td>
-                        <td><p style="float: left;color:green;"> {{$data->nombre}} &nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-                        <td> <input type="submit" name="borrar tarea" value="borrar tarea" ></button></td>
+                    <tr>
 
-                        </tr>
-                    
+                        <td>
+                            <p style="float: left;">Nombre de la tarea: &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </td>
+                        <td>
+                            <p style="float: left;color:green;"> {{$data->nombre}} &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </td>
+
+                        <td>
+
+                            <form method="POST" action="/tarea/{{ $data->id}}">
+                                {{ csrf_field() }}
+                                @method('delete')<input type="submit" name="borrar tarea" value="borrar tarea"></button>
+                            </form>
+                        </td>
+
+                    </tr>
 
 
-                    </table>
-                    
-                   
+
+                </table> <br>
+
+
                 @endforeach
-                </div>
+            </div>
 
-            </form>
+
 
 
 
         </div>
+
+
 
     </div>
 
